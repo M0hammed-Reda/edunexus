@@ -199,13 +199,27 @@ class _AddAnnouncementDialogState extends State<_AddAnnouncementDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text('Post Announcement'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextField(controller: _titleCtrl, decoration: const InputDecoration(labelText: 'Title')),
-          const SizedBox(height: 12),
-          TextField(controller: _contentCtrl, decoration: const InputDecoration(labelText: 'Content'), maxLines: 3),
-        ],
+      // ConstrainedBox + SingleChildScrollView: dialog scrolls when the
+      // soft keyboard appears instead of overflowing the screen bottom.
+      content: ConstrainedBox(
+        constraints: const BoxConstraints(maxHeight: 260),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: _titleCtrl,
+                decoration: const InputDecoration(labelText: 'Title'),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                controller: _contentCtrl,
+                decoration: const InputDecoration(labelText: 'Content'),
+                maxLines: 3,
+              ),
+            ],
+          ),
+        ),
       ),
       actions: [
         TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
@@ -250,13 +264,24 @@ class _AddMaterialDialogState extends State<_AddMaterialDialog> {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Text('Upload Material'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextField(controller: _titleCtrl, decoration: const InputDecoration(labelText: 'Title')),
-          const SizedBox(height: 12),
-          TextField(controller: _urlCtrl, decoration: const InputDecoration(labelText: 'File URL')),
-        ],
+      content: ConstrainedBox(
+        constraints: const BoxConstraints(maxHeight: 200),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                controller: _titleCtrl,
+                decoration: const InputDecoration(labelText: 'Title'),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                controller: _urlCtrl,
+                decoration: const InputDecoration(labelText: 'File URL'),
+              ),
+            ],
+          ),
+        ),
       ),
       actions: [
         TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),

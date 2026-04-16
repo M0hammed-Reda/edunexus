@@ -3,7 +3,6 @@ class AppConstants {
   AppConstants._(); // Private constructor: this class is never instantiated
 
   static const String appName = 'EduNexus';
-  static const String appTagline = 'SWE2 Educational Platform';
 
   // User roles — must match the "role" column in the users table
   static const String teacherRole = 'teacher';

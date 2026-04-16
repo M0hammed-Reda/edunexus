@@ -13,7 +13,7 @@ class AuthNotifier extends StateNotifier<UserModel?> {
   void loginAsTeacher() {
     state = UserModel(
       id: AppConstants.teacherUserId,
-      name: 'Dr. Ahmed Hassan',
+      name: 'Dr. Mohamed Reda',
       email: 'teacher@edunexus.com',
       role: AppConstants.teacherRole,
       createdAt: DateTime(2026, 1, 1),
@@ -23,7 +23,7 @@ class AuthNotifier extends StateNotifier<UserModel?> {
   void loginAsStudent() {
     state = UserModel(
       id: AppConstants.studentUserId,
-      name: 'Sara Mohamed',
+      name: 'Mohamed Reda',
       email: 'student@edunexus.com',
       role: AppConstants.studentRole,
       createdAt: DateTime(2026, 1, 1),

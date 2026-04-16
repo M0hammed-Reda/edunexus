@@ -39,15 +39,6 @@ class LoginScreen extends ConsumerWidget {
                     .headlineLarge
                     ?.copyWith(fontWeight: FontWeight.bold, color: const Color(0xFF3D5AF1)),
               ),
-              const SizedBox(height: 8),
-              Text(
-                AppConstants.appTagline,
-                textAlign: TextAlign.center,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(color: Colors.grey[600]),
-              ),
               const SizedBox(height: 56),
 
               // ── Role Selection Heading ───────────────────────────────────

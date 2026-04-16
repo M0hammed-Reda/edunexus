@@ -58,23 +58,37 @@ class AssignmentListScreen extends ConsumerWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   const SizedBox(height: 4),
-                                  Text(a.description, maxLines: 2, overflow: TextOverflow.ellipsis),
+                                  Text(
+                                    a.description,
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                   const SizedBox(height: 6),
-                                  // Deadline chip
+                                  // Deadline row — Flexible prevents right overflow
+                                  // when the trailing Submit button competes for space
                                   Row(
                                     children: [
                                       Icon(
                                         Icons.schedule,
                                         size: 14,
-                                        color: isOverdue ? Colors.red : Colors.grey[600],
+                                        color: isOverdue
+                                            ? Colors.red
+                                            : Colors.grey[600],
                                       ),
                                       const SizedBox(width: 4),
-                                      Text(
-                                        'Due: ${DateFormat('MMM d, yyyy – hh:mm a').format(a.deadline)}',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: isOverdue ? Colors.red : Colors.grey[600],
-                                          fontWeight: isOverdue ? FontWeight.bold : null,
+                                      Flexible(
+                                        child: Text(
+                                          'Due: ${DateFormat('MMM d, yyyy').format(a.deadline)}',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: isOverdue
+                                                ? Colors.red
+                                                : Colors.grey[600],
+                                            fontWeight: isOverdue
+                                                ? FontWeight.bold
+                                                : null,
+                                          ),
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                       ),
                                     ],
