@@ -1,0 +1,183 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary-fixed-dim": "#ffb59d",
+                  "on-secondary": "#ffffff",
+                  "on-tertiary-fixed-variant": "#832600",
+                  "on-secondary-fixed-variant": "#394472",
+                  "surface-dim": "#d9dadb",
+                  "on-error": "#ffffff",
+                  "secondary-fixed-dim": "#b9c4fa",
+                  "inverse-primary": "#b7c4ff",
+                  "on-secondary-container": "#475281",
+                  "surface-container-highest": "#e1e3e4",
+                  "on-primary-container": "#b2bfff",
+                  "surface-container-high": "#e7e8e9",
+                  "outline": "#747685",
+                  "surface-tint": "#2f53ce",
+                  "on-background": "#191c1d",
+                  "secondary-container": "#bcc7fd",
+                  "tertiary": "#6c1e00",
+                  "surface-container-lowest": "#ffffff",
+                  "primary-fixed-dim": "#b7c4ff",
+                  "primary": "#002c98",
+                  "on-tertiary-container": "#ffaf95",
+                  "primary-fixed": "#dde1ff",
+                  "on-surface-variant": "#444654",
+                  "background": "#f8f9fa",
+                  "primary-container": "#1a43bf",
+                  "on-error-container": "#93000a",
+                  "surface-variant": "#e1e3e4",
+                  "outline-variant": "#c4c5d6",
+                  "on-primary-fixed-variant": "#0438b6",
+                  "on-primary": "#ffffff",
+                  "tertiary-fixed": "#ffdbd0",
+                  "surface-container": "#edeeef",
+                  "inverse-surface": "#2e3132",
+                  "secondary-fixed": "#dde1ff",
+                  "inverse-on-surface": "#f0f1f2",
+                  "on-tertiary-fixed": "#390c00",
+                  "on-surface": "#191c1d",
+                  "secondary": "#515c8b",
+                  "surface-container-low": "#f3f4f5",
+                  "on-tertiary": "#ffffff",
+                  "on-secondary-fixed": "#0b1844",
+                  "on-primary-fixed": "#001453",
+                  "tertiary-container": "#932c00",
+                  "surface-bright": "#f8f9fa",
+                  "surface": "#f8f9fa",
+                  "error-container": "#ffdad6",
+                  "error": "#ba1a1a"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "fontFamily": {
+                  "headline": ["Manrope"],
+                  "body": ["Inter"],
+                  "label": ["Inter"]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .tonal-transition-no-border {
+      background-image: linear-gradient(to bottom, var(--tw-gradient-from), transparent);
+    }
+    .tonal-elevation {
+      box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-white">
+<!-- Suppression of Nav Shells per focused task-intent: Quiz in progress -->
+<!-- Top Bar / Header Component -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/70 backdrop-blur-xl flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+<h1 class="font-headline font-bold tracking-tight text-xl text-blue-900">Epistemology Quiz 1</h1>
+</div>
+<div class="flex items-center gap-3 bg-tertiary-fixed text-on-tertiary-fixed px-4 py-1.5 rounded-full font-label font-bold tracking-wider">
+<span class="material-symbols-outlined text-sm">timer</span>
+<span class="tabular-nums">14:52</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-4xl mx-auto min-h-screen">
+<!-- Progress Indicator -->
+<div class="mb-12">
+<div class="flex justify-between items-end mb-4">
+<div class="space-y-1">
+<p class="font-label text-xs uppercase tracking-widest text-secondary font-semibold">Question 04 of 12</p>
+<p class="text-on-surface-variant text-sm">Topic: Modern Rationalism</p>
+</div>
+<div class="font-headline text-3xl font-extrabold text-primary-container">33%</div>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full w-1/3 bg-gradient-to-r from-primary to-primary-container rounded-full"></div>
+</div>
+</div>
+<!-- Question Canvas -->
+<section class="space-y-10">
+<div class="space-y-6">
+<h2 class="font-headline text-3xl md:text-4xl font-bold leading-tight text-on-surface">
+          What is the primary focus of rationalism as a theory of knowledge?
+        </h2>
+<div class="w-24 h-1 bg-tertiary-fixed-dim rounded-full"></div>
+</div>
+<!-- Options Bento/Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Option 1 -->
+<button class="group relative flex items-center p-6 text-left bg-surface-container-low hover:bg-surface-container-lowest rounded-xl transition-all duration-200 active:scale-[0.98] outline outline-2 outline-transparent hover:outline-primary/10">
+<div class="flex-shrink-0 w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center font-headline font-bold text-secondary group-hover:bg-primary group-hover:text-white transition-colors">A</div>
+<span class="ml-4 font-body font-medium text-on-surface-variant group-hover:text-on-surface">Knowledge is primarily gained through sensory experience and observation.</span>
+</button>
+<!-- Option 2 (Selected State) -->
+<button class="group relative flex items-center p-6 text-left bg-surface-container-lowest rounded-xl transition-all duration-200 active:scale-[0.98] outline outline-2 outline-primary">
+<div class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary flex items-center justify-center font-headline font-bold text-white">B</div>
+<span class="ml-4 font-body font-medium text-on-surface">Knowledge is primarily gained through reason and innate ideas, independent of experience.</span>
+<div class="absolute top-4 right-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</button>
+<!-- Option 3 -->
+<button class="group relative flex items-center p-6 text-left bg-surface-container-low hover:bg-surface-container-lowest rounded-xl transition-all duration-200 active:scale-[0.98] outline outline-2 outline-transparent hover:outline-primary/10">
+<div class="flex-shrink-0 w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center font-headline font-bold text-secondary group-hover:bg-primary group-hover:text-white transition-colors">C</div>
+<span class="ml-4 font-body font-medium text-on-surface-variant group-hover:text-on-surface">Knowledge is impossible to attain and truth is relative to the individual observer.</span>
+</button>
+<!-- Option 4 -->
+<button class="group relative flex items-center p-6 text-left bg-surface-container-low hover:bg-surface-container-lowest rounded-xl transition-all duration-200 active:scale-[0.98] outline outline-2 outline-transparent hover:outline-primary/10">
+<div class="flex-shrink-0 w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center font-headline font-bold text-secondary group-hover:bg-primary group-hover:text-white transition-colors">D</div>
+<span class="ml-4 font-body font-medium text-on-surface-variant group-hover:text-on-surface">Knowledge is exclusively derived from divine revelation and sacred texts.</span>
+</button>
+</div>
+</section>
+<!-- Contextual Aesthetic Image -->
+<div class="mt-16 relative w-full h-48 rounded-3xl overflow-hidden grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700">
+<img alt="Conceptual art of knowledge" class="w-full h-full object-cover" data-alt="Abstract minimalist sculpture of a human head with geometric patterns inside representing logic, soft studio lighting, muted grey tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTvnO5JsnsYI2qooYe6rab_8xfSRKtXaVL-653FSwDJdcy2vxfvdAbtaOt0AFZ02T83hwHPDOYxrBaERFpUBvOA9UOnrh2ZCQlH17KA2FT3-l_t9iYqR3cige-3VTvHVr1XptROgcUmq4La2S0dHiRl9TsP4BWz1orUzxIOadhrR958liskEqq5E7knp-aT7G4dwNugAp49RPF5QhPhJg0VsMigFqyTEICY7-iS-BNEZKKMB9NJofmlz7UmaEdtldmpnPirxNgg6M"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+</main>
+<!-- Persistent Bottom Navigation Actions (Not Nav Bar, but Task Controls) -->
+<footer class="fixed bottom-0 left-0 w-full p-6 bg-surface/90 backdrop-blur-lg flex justify-center z-40">
+<div class="w-full max-w-4xl flex items-center justify-between">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl font-label font-bold tracking-wide text-secondary hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+        Previous
+      </button>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant font-label text-xs">4</button>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface-variant font-label text-xs">12</span>
+</div>
+<button class="flex items-center gap-2 px-8 py-3 rounded-xl font-label font-bold tracking-wide bg-primary text-white hover:bg-primary-container transition-all active:scale-95 shadow-lg shadow-primary/20">
+        Next
+        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</footer>
+<!-- FAB for Review or Notes - Suppressed based on "Task-Focused" rule -->
+</body></html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ffb59d",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#832600",
+                    "on-secondary-fixed-variant": "#394472",
+                    "surface-dim": "#d9dadb",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#b9c4fa",
+                    "inverse-primary": "#b7c4ff",
+                    "on-secondary-container": "#475281",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary-container": "#b2bfff",
+                    "surface-container-high": "#e7e8e9",
+                    "outline": "#747685",
+                    "surface-tint": "#2f53ce",
+                    "on-background": "#191c1d",
+                    "secondary-container": "#bcc7fd",
+                    "tertiary": "#6c1e00",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "primary": "#002c98",
+                    "on-tertiary-container": "#ffaf95",
+                    "primary-fixed": "#dde1ff",
+                    "on-surface-variant": "#444654",
+                    "background": "#f8f9fa",
+                    "primary-container": "#1a43bf",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e1e3e4",
+                    "outline-variant": "#c4c5d6",
+                    "on-primary-fixed-variant": "#0438b6",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#ffdbd0",
+                    "surface-container": "#edeeef",
+                    "inverse-surface": "#2e3132",
+                    "secondary-fixed": "#dde1ff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-tertiary-fixed": "#390c00",
+                    "on-surface": "#191c1d",
+                    "secondary": "#515c8b",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#0b1844",
+                    "on-primary-fixed": "#001453",
+                    "tertiary-container": "#932c00",
+                    "surface-bright": "#f8f9fa",
+                    "surface": "#f8f9fa",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-elevation {
+            box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+        }
+        .tonal-transition-no-border {
+            border: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-slate-50/70 backdrop-blur-xl tonal-transition-no-border">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:opacity-80 transition-opacity">menu</span>
+<h1 class="font-headline font-bold tracking-tight text-xl text-blue-900">Intellectual Sanctuary</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="portrait of a professional woman with a confident expression, soft natural lighting, minimalist studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDreECFq_8nkFCge03bY6tI0Z_Xys97KRE93wIPv0d4bYaSmYfRkf-oq__AZF02wpw_p_F3mS29jWmR3Zsl1juPnfkXLcUcMDlKt-mx_qILTvoTWkiC7gK8xPE8MvxgREAnXVOZgO7ei-oaxvrqlkxrwWkPoW-Fv1En0LHkzHmHYaK0rjlMIJ6p-e6_jITF_Mx5RPTpLH3EtAszjPQ0H69HGYGgElzZ-3r0f7-ebEFQ3mRz39dXkhwq7EEk0RDGF-iSxYt4jvL_UhY"/>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-16 pb-32 pt-10 px-6 max-w-2xl mx-auto w-full">
+<!-- Profile Header Section -->
+<section class="flex flex-col items-center mb-12">
+<div class="relative group">
+<div class="w-32 h-32 rounded-full overflow-hidden mb-6 shadow-xl ring-4 ring-surface-container-low">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a thoughtful person looking towards the camera, soft editorial lighting, clean neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0xo5x39ReT6CJyY6xqN37rKE4icuayKfyHIoIKRFZk3T4QWJ72qPBkQRLy-OIhETxICf9fPs6sqp0eRCTdDuqwkd_Mp3i0mu-kwo8G9FMUQSb8I9PKOnRX97NwkKr_6TZwuf6btK6CAxCO4esyFxErcl7J3R2Gqg8tdEE6_plLxERri3TZKaUHM4sYUpBmzOsOvQ3pJQK7EThIc5lYZLUdu7iyEX07CJeGspQzhEXmLGmfzlQ93cSyIw2iK_Fjez-_mzV4JDr3N0"/>
+</div>
+<button class="absolute bottom-6 right-0 bg-primary text-on-primary p-2 rounded-full shadow-lg active:scale-95 duration-200">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<h2 class="font-headline text-3xl font-extrabold text-on-surface mb-1">Elena Rostova</h2>
+<p class="font-label text-slate-500 tracking-wider uppercase text-xs">Curiosity Member since 2023</p>
+</section>
+<!-- Profile Settings Form -->
+<section class="space-y-8">
+<div class="bg-surface-container-low rounded-xl p-8 transition-all">
+<h3 class="font-headline text-xl font-bold text-blue-900 mb-8">Profile Settings</h3>
+<form class="space-y-6">
+<!-- Display Name Field -->
+<div class="space-y-2">
+<label class="font-label text-[11px] font-medium tracking-wide uppercase text-slate-500 px-1">Display Name</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-4 text-on-surface font-medium focus:ring-2 focus:ring-primary/20 transition-all outline-none" type="text" value="Elena Rostova"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">person</span>
+</div>
+</div>
+<!-- Email Field -->
+<div class="space-y-2">
+<label class="font-label text-[11px] font-medium tracking-wide uppercase text-slate-500 px-1">Email Address</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-4 text-on-surface font-medium focus:ring-2 focus:ring-primary/20 transition-all outline-none" type="email" value="elena.rostova@sanctuary.edu"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">mail</span>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-2">
+<label class="font-label text-[11px] font-medium tracking-wide uppercase text-slate-500 px-1">Password</label>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-xl px-4 py-4 text-on-surface font-medium focus:ring-2 focus:ring-primary/20 transition-all outline-none" type="password" value="••••••••••••"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400">lock</span>
+</div>
+</div>
+</form>
+</div>
+<!-- Action Button -->
+<div class="pt-4">
+<button class="w-full bg-primary hover:opacity-90 text-on-primary font-headline font-bold py-5 rounded-xl transition-all active:scale-98 shadow-lg shadow-primary/20">
+                    Save Changes
+                </button>
+</div>
+</section>
+<!-- Secondary Focus Area (Asymmetric Layout Example) -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-blue-50/50 p-6 rounded-xl flex flex-col gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">auto_stories</span>
+<p class="font-headline text-lg font-bold text-blue-900">32 Courses</p>
+<p class="text-sm text-slate-600">Deep dives into cognitive sciences and philosophy completed this year.</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<div class="fixed bottom-6 w-full flex justify-center z-50">
+<nav class="fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md rounded-3xl bg-white/80 backdrop-blur-2xl tonal-elevation flex items-center justify-between px-4 py-3">
+<!-- Learn -->
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-blue-600 transition-transform active:scale-98 duration-200" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Learn</span>
+</a>
+<!-- Create -->
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-blue-600 transition-transform active:scale-98 duration-200" href="#">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Create</span>
+</a>
+<!-- Results -->
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-blue-600 transition-transform active:scale-98 duration-200" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Results</span>
+</a>
+<!-- Profile (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-blue-600 text-white rounded-2xl px-5 py-2 transition-transform active:scale-98 duration-200 shadow-lg shadow-blue-600/30" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase">Profile</span>
+</a>
+</nav>
+</div>
+</body></html>

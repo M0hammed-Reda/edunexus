@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EduFlow | Login</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;family=Inter:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error-container": "#93000a",
+                    "outline": "#747685",
+                    "primary": "#1A43BF",
+                    "background": "#f8f9fa",
+                    "on-secondary-fixed": "#0b1844",
+                    "on-primary-fixed-variant": "#0438b6",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "on-surface": "#191c1d",
+                    "error": "#ba1a1a",
+                    "on-tertiary-container": "#ffaf95",
+                    "surface": "#f8f9fa",
+                    "on-tertiary-fixed": "#390c00",
+                    "tertiary-fixed-dim": "#ffb59d",
+                    "surface-tint": "#1A43BF",
+                    "inverse-primary": "#b7c4ff",
+                    "inverse-surface": "#2e3132",
+                    "secondary-fixed": "#dde1ff",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container-highest": "#e1e3e4",
+                    "tertiary-container": "#932c00",
+                    "tertiary-fixed": "#ffdbd0",
+                    "on-error": "#ffffff",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#1A43BF",
+                    "on-surface-variant": "#444654",
+                    "primary-fixed": "#dde1ff",
+                    "surface-container": "#edeeef",
+                    "surface-variant": "#e1e3e4",
+                    "surface-bright": "#f8f9fa",
+                    "outline-variant": "#c4c5d6",
+                    "on-tertiary-fixed-variant": "#832600",
+                    "on-primary-fixed": "#001453",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#394472",
+                    "on-secondary-container": "#475281",
+                    "secondary": "#515c8b",
+                    "secondary-container": "#bcc7fd",
+                    "secondary-fixed-dim": "#b9c4fa",
+                    "tertiary": "#6c1e00",
+                    "on-primary-container": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-background": "#191c1d",
+                    "on-primary": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f3f4f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.5rem",
+                    "lg": "0.5rem",
+                    "xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center justify-center p-4">
+<main class="w-full max-w-lg flex flex-col space-y-8">
+<!-- Branding Header -->
+<div class="flex flex-col items-center gap-3 mb-4">
+<div class="w-16 h-16 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined text-4xl" data-icon="school">school</span>
+</div>
+<span class="text-3xl font-extrabold tracking-tight text-primary">EduFlow</span>
+</div>
+<!-- Toggle Section -->
+<div class="flex justify-center p-1 bg-surface-container-low rounded-lg w-full max-w-xs mx-auto">
+<button class="flex-1 py-2 px-4 rounded-md text-sm font-bold bg-white shadow-sm text-primary transition-all">Login</button>
+<button class="flex-1 py-2 px-4 rounded-md text-sm font-bold text-outline hover:text-on-surface transition-all">Register</button>
+</div>
+<!-- Role Selection -->
+<section class="space-y-4">
+<h2 class="text-[11px] font-bold tracking-widest uppercase text-outline text-center">Identify your Role</h2>
+<div class="grid grid-cols-3 gap-3">
+<!-- Student -->
+<button class="group flex flex-col items-center p-4 bg-surface-container-low rounded-lg transition-all duration-200 active:scale-95 hover:bg-surface-container-high">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center mb-2 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="person">person</span>
+</div>
+<span class="text-xs font-bold text-on-surface">Student</span>
+</button>
+<!-- Teacher -->
+<button class="group flex flex-col items-center p-4 bg-surface-container-low border-2 border-primary/20 rounded-lg transition-all duration-200 active:scale-95 hover:bg-surface-container-high">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center mb-2 shadow-sm text-white">
+<span class="material-symbols-outlined text-xl" data-icon="edit_note">edit_note</span>
+</div>
+<span class="text-xs font-bold text-on-surface">Teacher</span>
+</button>
+<!-- Admin -->
+<button class="group flex flex-col items-center p-4 bg-surface-container-low rounded-lg transition-all duration-200 active:scale-95 hover:bg-surface-container-high">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center mb-2 shadow-sm group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-xl" data-icon="admin_panel_settings">admin_panel_settings</span>
+</div>
+<span class="text-xs font-bold text-on-surface">Admin</span>
+</button>
+</div>
+</section>
+<!-- Simple Login Form -->
+<section class="glass-panel p-8 rounded-xl shadow-[0_24px_48px_-12px_rgba(0,0,0,0.06)] border border-white/50">
+<div class="mb-8">
+<h3 class="text-2xl font-bold text-on-surface">Welcome back</h3>
+</div>
+<form class="space-y-5" onsubmit="return false;">
+<div class="space-y-2">
+<label class="text-[11px] font-bold tracking-widest uppercase text-outline ml-1">Academic Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="mail">mail</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary/20 transition-all text-on-surface placeholder:text-outline" placeholder="name@university.edu" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center px-1">
+<label class="text-[11px] font-bold tracking-widest uppercase text-outline">Passphrase</label>
+<a class="text-[11px] font-bold text-primary uppercase tracking-wider hover:underline" href="#">Forgot?</a>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline" data-icon="lock">lock</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-highest border-none rounded-lg focus:ring-2 focus:ring-primary/20 transition-all text-on-surface placeholder:text-outline" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold py-5 rounded-lg shadow-lg transition-transform active:scale-95 hover:brightness-110 flex items-center justify-center gap-2 mt-4">
+<span>Access Sanctuary</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+</section>
+</main>
+</body></html>

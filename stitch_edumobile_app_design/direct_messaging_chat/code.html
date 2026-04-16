@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error-container": "#93000a",
+                        "outline": "#747685",
+                        "primary": "#1A43BF",
+                        "background": "#f8f9fa",
+                        "on-secondary-fixed": "#0b1844",
+                        "on-primary-fixed-variant": "#0438b6",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#b7c4ff",
+                        "on-surface": "#191c1d",
+                        "error": "#ba1a1a",
+                        "on-tertiary-container": "#ffaf95",
+                        "surface": "#f8f9fa",
+                        "on-tertiary-fixed": "#390c00",
+                        "tertiary-fixed-dim": "#ffb59d",
+                        "surface-tint": "#1A43BF",
+                        "inverse-primary": "#b7c4ff",
+                        "inverse-surface": "#2e3132",
+                        "secondary-fixed": "#dde1ff",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-container-highest": "#e1e3e4",
+                        "tertiary-container": "#932c00",
+                        "tertiary-fixed": "#ffdbd0",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#1A43BF",
+                        "on-surface-variant": "#444654",
+                        "primary-fixed": "#dde1ff",
+                        "surface-container": "#edeeef",
+                        "surface-variant": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
+                        "outline-variant": "#c4c5d6",
+                        "on-tertiary-fixed-variant": "#832600",
+                        "on-primary-fixed": "#001453",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#394472",
+                        "on-secondary-container": "#475281",
+                        "secondary": "#515c8b",
+                        "secondary-container": "#bcc7fd",
+                        "secondary-fixed-dim": "#b9c4fa",
+                        "tertiary": "#6c1e00",
+                        "on-primary-container": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-background": "#191c1d",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#d9dadb",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f3f4f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-white border-b border-outline-variant/30 w-full top-0 px-4 py-3 z-50">
+<div class="flex justify-between items-center w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-3">
+<button class="hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Dr. Aris Thorne" class="w-10 h-10 rounded-full object-cover" data-alt="Professional portrait of a middle-aged woman with glasses and a kind smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt7Sv5dJXIOMII4Q_N3OVB6FiFBXZ36EL-9sXtC62u8PBS-9e3LU0PnCP0ytq4BpkTPQCKpIUlv5WCdHcJ5Gtkcio8YqVIFYzvSRWa-p-bZTXdgPx_mR17GPSo9UdT4X5FUlRlufpFlANIZRh-kiJZAAejYAjpQGlkL9CubalWeGMuL8-qVklZn7H3IkgTBfrMdQHphpa7Tc3vI01JwUAjPJIAqhzOausiB60RK2_B24tzDbVyEAIiaVHpmsecFRJvFgecD12x_K4"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+</div>
+<div>
+<h1 class="text-on-surface text-base font-bold leading-tight">Dr. Aris Thorne</h1>
+</div>
+</div>
+</div>
+<div class="flex gap-1">
+<button class="hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface">videocam</span>
+</button>
+<button class="hover:bg-surface-container-high p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined text-on-surface">info</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow overflow-y-auto px-4 py-6 space-y-6 max-w-screen-md mx-auto w-full">
+<!-- Date Marker -->
+<div class="flex justify-center">
+<span class="bg-surface-container-low px-3 py-1 rounded-lg text-[11px] font-semibold text-outline uppercase tracking-wide">Today</span>
+</div>
+<!-- Message Bubble: Teacher (Incoming) -->
+<div class="flex items-end gap-3">
+<div class="flex flex-col max-w-[85%]">
+<div class="bg-white border border-outline-variant/30 text-on-surface p-4 rounded-xl rounded-bl-none shadow-sm">
+<p class="text-sm leading-relaxed">Good morning, Julian. I've finished reviewing your thesis proposal on "The Ethics of Artificial Cognition." Your methodology section is quite robust, but I'd like to discuss the third paragraph.</p>
+</div>
+<span class="text-[10px] text-outline mt-1.5 ml-1">09:42 AM</span>
+</div>
+</div>
+<!-- Message Bubble: Student (Outgoing) -->
+<div class="flex items-end justify-end gap-3">
+<div class="flex flex-col max-w-[85%] items-end">
+<div class="bg-primary text-white p-4 rounded-xl rounded-br-none shadow-sm">
+<p class="text-sm leading-relaxed">Thank you, Dr. Thorne! I was worried about that section. Are you referring to the part regarding the 'Functionalist' perspective? I felt I might have oversimplified the nuance there.</p>
+</div>
+<div class="flex items-center gap-1 mt-1.5 mr-1">
+<span class="text-[10px] text-outline">09:45 AM</span>
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+</div>
+<!-- Attachment (Teacher) -->
+<div class="flex items-end gap-3">
+<div class="flex flex-col max-w-[85%]">
+<div class="bg-white border border-outline-variant/30 text-on-surface p-3 rounded-xl rounded-bl-none shadow-sm">
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-lg border border-outline-variant/20 mb-2">
+<div class="w-10 h-10 bg-primary/10 flex items-center justify-center rounded-md">
+<span class="material-symbols-outlined text-primary">description</span>
+</div>
+<div class="flex-grow overflow-hidden">
+<p class="text-xs font-bold truncate">Ethics_Review_Notes.pdf</p>
+<p class="text-[10px] text-outline">1.2 MB • PDF Document</p>
+</div>
+<button class="text-primary p-1 hover:bg-primary/5 rounded-full">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+<p class="text-sm leading-relaxed px-1">I've highlighted the specific areas here. Let's aim for a quick sync during my office hours tomorrow at 2 PM?</p>
+</div>
+<span class="text-[10px] text-outline mt-1.5 ml-1">09:47 AM</span>
+</div>
+</div>
+<!-- Message Bubble: Student (Outgoing) -->
+<div class="flex items-end justify-end gap-3">
+<div class="flex flex-col max-w-[85%] items-end">
+<div class="bg-primary text-white p-4 rounded-xl rounded-br-none shadow-sm">
+<p class="text-sm leading-relaxed">That works perfectly for me. I'll review these notes and come prepared with a few revised drafts of those specific paragraphs. See you then!</p>
+</div>
+<div class="flex items-center gap-1 mt-1.5 mr-1">
+<span class="text-[10px] text-outline">09:50 AM</span>
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</div>
+</div>
+</div>
+<!-- Typing Indicator -->
+</main>
+<!-- Message Input Bar -->
+<footer class="p-4 bg-white border-t border-outline-variant/30">
+<div class="max-w-screen-md mx-auto flex items-center gap-3">
+<button class="text-outline hover:text-primary transition-colors p-1">
+<span class="material-symbols-outlined">add_circle</span>
+</button>
+<div class="flex-grow bg-surface-container-low rounded-xl px-4 py-2 flex items-center gap-2 border border-transparent focus-within:border-primary/30 transition-all">
+<input class="flex-grow bg-transparent border-none focus:ring-0 text-sm py-1.5 text-on-surface placeholder:text-outline" placeholder="Type a message..." type="text"/>
+<button class="text-outline hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">mood</span>
+</button>
+</div>
+<button class="bg-primary text-white w-10 h-10 flex items-center justify-center rounded-xl shadow-sm hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Create New Quiz | Intellectual Sanctuary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed-dim": "#ffb59d",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#832600",
+                    "on-secondary-fixed-variant": "#394472",
+                    "surface-dim": "#d9dadb",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#b9c4fa",
+                    "inverse-primary": "#b7c4ff",
+                    "on-secondary-container": "#475281",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary-container": "#b2bfff",
+                    "surface-container-high": "#e7e8e9",
+                    "outline": "#747685",
+                    "surface-tint": "#2f53ce",
+                    "on-background": "#191c1d",
+                    "secondary-container": "#bcc7fd",
+                    "tertiary": "#6c1e00",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#b7c4ff",
+                    "primary": "#002c98",
+                    "on-tertiary-container": "#ffaf95",
+                    "primary-fixed": "#dde1ff",
+                    "on-surface-variant": "#444654",
+                    "background": "#f8f9fa",
+                    "primary-container": "#1a43bf",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e1e3e4",
+                    "outline-variant": "#c4c5d6",
+                    "on-primary-fixed-variant": "#0438b6",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed": "#ffdbd0",
+                    "surface-container": "#edeeef",
+                    "inverse-surface": "#2e3132",
+                    "secondary-fixed": "#dde1ff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-tertiary-fixed": "#390c00",
+                    "on-surface": "#191c1d",
+                    "secondary": "#515c8b",
+                    "surface-container-low": "#f3f4f5",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed": "#0b1844",
+                    "on-primary-fixed": "#001453",
+                    "tertiary-container": "#932c00",
+                    "surface-bright": "#f8f9fa",
+                    "surface": "#f8f9fa",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-transition-no-border {
+            background-image: linear-gradient(to bottom, rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.7));
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-50/70 backdrop-blur-xl flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<button class="text-slate-500 hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="text-xl font-extrabold text-blue-900 font-headline tracking-tight">Intellectual Sanctuary</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-slate-500 font-label text-[11px] font-medium tracking-wide uppercase hover:text-blue-600 transition-colors" href="#">Learn</a>
+<a class="text-blue-700 font-label text-[11px] font-medium tracking-wide uppercase" href="#">Create</a>
+<a class="text-slate-500 font-label text-[11px] font-medium tracking-wide uppercase hover:text-blue-600 transition-colors" href="#">Results</a>
+</nav>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a smiling female educator in a minimalist bright studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFykWNfhTBr09XmCeah1xbYQ-hr0NroygLOiFQCDRKg2iiXJC2bl9XG4f6KkS0yQD33PXq7AEoIbCSymm2v7DY7SyoQeuAH9yJ8Skv0E56pfU5h3tCNpWxJtMg-C9R6H4viOFvmyk2i1DoBrsnpLZflVJFadu2TDu-5RiNsvLPajCGyuTbLDfg3zuvHjGJ8p7N6sYvt39oPibanH5scxzTHorhqWlttDPVclEz33qq0UNNlAdu7CNPKmrVceHbif8F85LnFs4CAdY"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-4xl mx-auto">
+<!-- Header Section -->
+<div class="mb-12">
+<span class="text-primary font-label text-[11px] font-bold tracking-[0.2em] uppercase block mb-3">Assessment Builder</span>
+<h2 class="text-5xl font-extrabold font-headline text-on-surface tracking-tight mb-4">Create New Quiz</h2>
+<p class="text-on-surface-variant text-lg max-w-xl leading-relaxed">Design thoughtful inquiries for your sanctuary of learning. Each question is a stepping stone to mastery.</p>
+</div>
+<!-- Form Canvas -->
+<section class="space-y-8">
+<!-- Quiz Basics Card -->
+<div class="bg-surface-container-low p-8 rounded-[2rem] shadow-none">
+<div class="mb-8">
+<label class="block font-headline font-bold text-sm text-primary mb-3 uppercase tracking-wider" for="quiz-title">Quiz Title</label>
+<input class="w-full bg-surface-container-highest border-none rounded-2xl px-6 py-4 text-xl font-headline font-bold focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-outline-variant" id="quiz-title" placeholder="Enter a descriptive name..." type="text"/>
+</div>
+<div class="grid md:grid-cols-2 gap-8 items-center pt-4 border-t border-outline-variant/10">
+<div class="flex items-center justify-between bg-surface-container-high/50 p-6 rounded-2xl">
+<div class="flex flex-col">
+<span class="font-headline font-bold text-on-surface">Timed Quiz</span>
+<span class="text-xs text-on-surface-variant">Set a duration for focus</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-high/50 p-4 rounded-2xl">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<div class="flex-1">
+<label class="block text-[10px] font-bold text-on-surface-variant uppercase tracking-widest mb-1">Duration (minutes)</label>
+<input class="w-full bg-transparent border-none p-0 text-lg font-bold text-on-surface focus:ring-0" type="number" value="30"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Questions Container -->
+<div class="space-y-6">
+<div class="flex items-center justify-between px-2">
+<h3 class="font-headline font-extrabold text-2xl text-on-surface">Questions</h3>
+<span class="text-sm font-medium text-on-surface-variant bg-surface-container-high px-4 py-1.5 rounded-full">2 Items Added</span>
+</div>
+<!-- Question Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-[2rem] shadow-[0_24px_48px_-12px_rgba(0,0,0,0.06)] relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-primary-container"></div>
+<div class="flex justify-between items-start mb-6">
+<span class="text-xs font-bold text-primary bg-primary-fixed px-3 py-1 rounded-lg">QUESTION 01</span>
+<button class="text-outline-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined" data-icon="delete">delete</span>
+</button>
+</div>
+<textarea class="w-full bg-surface-container-low border-none rounded-2xl px-6 py-4 text-lg font-medium mb-6 focus:ring-2 focus:ring-primary/10 transition-all resize-none" placeholder="Write your question here..." rows="2"></textarea>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="flex items-center gap-3 bg-surface-container-low p-4 rounded-xl group hover:bg-surface-container-high transition-colors">
+<div class="w-6 h-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]" data-icon="check" data-weight="fill">check</span>
+</div>
+<input class="bg-transparent border-none p-0 w-full text-sm font-medium focus:ring-0" type="text" value="The Great Gatsby"/>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low p-4 rounded-xl group hover:bg-surface-container-high transition-colors">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant"></div>
+<input class="bg-transparent border-none p-0 w-full text-sm font-medium focus:ring-0" type="text" value="Ulysses"/>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low p-4 rounded-xl group hover:bg-surface-container-high transition-colors">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant"></div>
+<input class="bg-transparent border-none p-0 w-full text-sm font-medium focus:ring-0" type="text" value="Moby Dick"/>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low p-4 rounded-xl group hover:bg-surface-container-high transition-colors">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant"></div>
+<input class="bg-transparent border-none p-0 w-full text-sm font-medium focus:ring-0" type="text" value="Brave New World"/>
+</div>
+</div>
+</div>
+<!-- Add Question Placeholder -->
+<button class="w-full py-8 border-2 border-dashed border-outline-variant/30 rounded-[2rem] text-on-surface-variant hover:bg-surface-container-low hover:border-primary/20 transition-all flex flex-col items-center justify-center gap-2 group">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="add">add</span>
+</div>
+<span class="font-headline font-bold uppercase tracking-widest text-[11px]">Append New Question</span>
+</button>
+</div>
+<!-- Action Section -->
+<div class="flex flex-col md:flex-row items-center justify-between pt-8 gap-6">
+<div class="flex items-center gap-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]" data-icon="cloud_done">cloud_done</span>
+<span class="text-sm">Autosaved at 14:42</span>
+</div>
+<div class="flex items-center gap-4 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-8 py-4 rounded-2xl font-headline font-bold text-primary hover:bg-primary/5 transition-colors">Discard Draft</button>
+<button class="flex-1 md:flex-none px-12 py-4 rounded-2xl bg-gradient-to-r from-primary to-primary-container text-white font-headline font-extrabold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">Save Quiz</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[90%] max-w-md bg-white/80 backdrop-blur-2xl rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex justify-around p-2 z-50">
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-blue-600 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Learn</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-blue-600 text-white rounded-2xl px-5 py-2 active:scale-98 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Create</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-blue-600 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Results</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 px-5 py-2 hover:text-blue-600 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[11px] font-medium tracking-wide uppercase mt-1">Profile</span>
+</a>
+</nav>
+<!-- Decorative Elements -->
+<div class="fixed top-[20%] right-[-5%] w-96 h-96 bg-primary/5 rounded-full blur-[100px] pointer-events-none -z-10"></div>
+<div class="fixed bottom-[10%] left-[-5%] w-64 h-64 bg-tertiary/5 rounded-full blur-[80px] pointer-events-none -z-10"></div>
+</body></html>
