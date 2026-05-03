@@ -1,6 +1,7 @@
 /// Represents a row in the `assignments` table.
 class AssignmentModel {
   final String id;
+  final String classroomId;
   final String title;
   final String description;
   final DateTime deadline;
@@ -9,6 +10,7 @@ class AssignmentModel {
 
   const AssignmentModel({
     required this.id,
+    required this.classroomId,
     required this.title,
     required this.description,
     required this.deadline,
@@ -20,6 +22,7 @@ class AssignmentModel {
   factory AssignmentModel.fromJson(Map<String, dynamic> json) =>
       AssignmentModel(
         id: json['id'] as String,
+        classroomId: json['classroom_id'] as String,
         title: json['title'] as String,
         description: json['description'] as String,
         deadline: DateTime.parse(json['deadline'] as String),
@@ -29,6 +32,7 @@ class AssignmentModel {
 
   Map<String, dynamic> toJson() => {
         'id': id,
+        'classroom_id': classroomId,
         'title': title,
         'description': description,
         'deadline': deadline.toIso8601String(),

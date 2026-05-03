@@ -2,37 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../core/constants/app_constants.dart';
 import '../viewmodel/auth_viewmodel.dart';
 
-class LoginScreen extends ConsumerStatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends ConsumerStatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  ConsumerState<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen> {
+class _SignupScreenState extends ConsumerState<SignupScreen> {
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  String _selectedRole = 'student'; // 'student', 'teacher', 'manager'
 
   @override
   void dispose() {
+    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
 
-  Future<void> _handleLogin() async {
-    final success = await ref.read(authProvider.notifier).login(
+  Future<void> _handleSignup() async {
+    final success = await ref.read(authProvider.notifier).signup(
+      _nameController.text.trim(),
       _emailController.text.trim(),
       _passwordController.text,
+      _selectedRole,
     );
     
     if (!success && mounted) {
       final error = ref.read(authProvider).error;
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(error ?? 'Login failed')),
+        SnackBar(content: Text(error ?? 'Signup failed')),
       );
     }
   }
@@ -42,30 +46,22 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final authState = ref.watch(authProvider);
 
     return Scaffold(
+      appBar: AppBar(title: const Text('Create Account')),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              const SizedBox(height: 48),
-              const Center(
-                child: CircleAvatar(
-                  radius: 44,
-                  backgroundColor: Color(0xFF3D5AF1),
-                  child: Icon(Icons.school, size: 48, color: Colors.white),
+              TextField(
+                controller: _nameController,
+                decoration: const InputDecoration(
+                  labelText: 'Full Name',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.person),
                 ),
               ),
-              const SizedBox(height: 24),
-              Text(
-                AppConstants.appName,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: const Color(0xFF3D5AF1),
-                    ),
-              ),
-              const SizedBox(height: 56),
+              const SizedBox(height: 16),
               TextField(
                 controller: _emailController,
                 decoration: const InputDecoration(
@@ -85,12 +81,29 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
                 obscureText: true,
               ),
+              const SizedBox(height: 16),
+              DropdownButtonFormField<String>(
+                value: _selectedRole,
+                decoration: const InputDecoration(
+                  labelText: 'Role',
+                  border: OutlineInputBorder(),
+                  prefixIcon: Icon(Icons.badge),
+                ),
+                items: const [
+                  DropdownMenuItem(value: 'student', child: Text('Student')),
+                  DropdownMenuItem(value: 'teacher', child: Text('Teacher')),
+                  DropdownMenuItem(value: 'manager', child: Text('Manager')),
+                ],
+                onChanged: (val) {
+                  if (val != null) setState(() => _selectedRole = val);
+                },
+              ),
               const SizedBox(height: 32),
               ElevatedButton(
-                onPressed: authState.isLoading ? null : _handleLogin,
+                onPressed: authState.isLoading ? null : _handleSignup,
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
-                  backgroundColor: const Color(0xFF3D5AF1),
+                  backgroundColor: const Color(0xFF2EC4B6),
                   foregroundColor: Colors.white,
                 ),
                 child: authState.isLoading
@@ -99,12 +112,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         width: 20,
                         child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
                       )
-                    : const Text('Login', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-              ),
-              const SizedBox(height: 16),
-              TextButton(
-                onPressed: () => context.push('/signup'),
-                child: const Text('Don\'t have an account? Sign Up'),
+                    : const Text('Sign Up', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
               ),
             ],
           ),

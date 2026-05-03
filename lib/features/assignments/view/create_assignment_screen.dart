@@ -51,7 +51,7 @@ class _CreateAssignmentScreenState
     }
 
     setState(() => _isSaving = true);
-    final user = ref.read(authProvider);
+    final user = ref.read(authProvider).user;
     await ref.read(assignmentsProvider.notifier).createAssignment(
           title: _titleCtrl.text.trim(),
           description: _descCtrl.text.trim(),

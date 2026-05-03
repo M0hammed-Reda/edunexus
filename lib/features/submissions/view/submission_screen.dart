@@ -28,7 +28,7 @@ class _SubmissionScreenState extends ConsumerState<SubmissionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final user = ref.watch(authProvider);
+    final user = ref.watch(authProvider).user;
     final params = (assignmentId: widget.assignmentId, studentId: user!.id);
 
     // OBSERVER: watch submission state for this specific assignment + student

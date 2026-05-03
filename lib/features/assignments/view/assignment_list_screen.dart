@@ -13,7 +13,7 @@ class AssignmentListScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // OBSERVER: rebuilds whenever assignment state changes
     final state = ref.watch(assignmentsProvider);
-    final user = ref.watch(authProvider);
+    final user = ref.watch(authProvider).user;
     final isTeacher = user?.isTeacher ?? false;
 
     return Scaffold(

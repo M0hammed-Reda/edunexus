@@ -62,6 +62,7 @@ class AssignmentsNotifier extends StateNotifier<AssignmentsState> {
   }) async {
     final assignment = AssignmentModel(
       id: const Uuid().v4(),
+      classroomId: 'dummy_classroom_id',
       title: title,
       description: description,
       deadline: deadline,
