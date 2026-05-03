@@ -25,6 +25,7 @@ class MockDataService {
   final List<Map<String, dynamic>> _announcements = [
     {
       'id': 'a1',
+      'classroom_id': 'dummy_classroom_id',
       'title': 'Welcome to SWE2!',
       'content': 'This course covers software architecture & design patterns.',
       'created_by': '11111111-1111-1111-1111-111111111111',
@@ -32,6 +33,7 @@ class MockDataService {
     },
     {
       'id': 'a2',
+      'classroom_id': 'dummy_classroom_id',
       'title': 'Midterm Date Announced',
       'content': 'The midterm exam will be held on May 5th, 2026.',
       'created_by': '11111111-1111-1111-1111-111111111111',
@@ -42,6 +44,7 @@ class MockDataService {
   final List<Map<String, dynamic>> _materials = [
     {
       'id': 'm1',
+      'classroom_id': 'dummy_classroom_id',
       'title': 'Lecture 1 — Clean Architecture.pdf',
       'file_url': 'https://example.com/files/lecture1.pdf',
       'uploaded_by': '11111111-1111-1111-1111-111111111111',
@@ -49,6 +52,7 @@ class MockDataService {
     },
     {
       'id': 'm2',
+      'classroom_id': 'dummy_classroom_id',
       'title': 'Lecture 2 — Design Patterns.pdf',
       'file_url': 'https://example.com/files/lecture2.pdf',
       'uploaded_by': '11111111-1111-1111-1111-111111111111',
@@ -59,6 +63,7 @@ class MockDataService {
   final List<Map<String, dynamic>> _assignments = [
     {
       'id': 'hw1',
+      'classroom_id': 'dummy_classroom_id',
       'title': 'Assignment 1 — UML Diagrams',
       'description': 'Draw class & sequence diagrams for the EduNexus app.',
       'deadline': '2026-04-25T23:59:00.000Z',
@@ -67,6 +72,7 @@ class MockDataService {
     },
     {
       'id': 'hw2',
+      'classroom_id': 'dummy_classroom_id',
       'title': 'Assignment 2 — Repository Pattern',
       'description':
           'Implement the Repository pattern for a simple CRUD feature.',

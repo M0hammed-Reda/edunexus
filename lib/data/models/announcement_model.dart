@@ -1,6 +1,7 @@
 /// Represents a row in the `announcements` table.
 class AnnouncementModel {
   final String id;
+  final String classroomId;
   final String title;
   final String content;
   final String createdBy; // FK → users.id
@@ -8,6 +9,7 @@ class AnnouncementModel {
 
   const AnnouncementModel({
     required this.id,
+    required this.classroomId,
     required this.title,
     required this.content,
     required this.createdBy,
@@ -18,6 +20,7 @@ class AnnouncementModel {
   factory AnnouncementModel.fromJson(Map<String, dynamic> json) =>
       AnnouncementModel(
         id: json['id'] as String,
+        classroomId: json['classroom_id'] as String,
         title: json['title'] as String,
         content: json['content'] as String,
         createdBy: json['created_by'] as String,
@@ -26,6 +29,7 @@ class AnnouncementModel {
 
   Map<String, dynamic> toJson() => {
         'id': id,
+        'classroom_id': classroomId,
         'title': title,
         'content': content,
         'created_by': createdBy,

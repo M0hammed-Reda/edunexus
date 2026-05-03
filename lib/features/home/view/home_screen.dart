@@ -6,17 +6,15 @@ import 'package:intl/intl.dart';
 import '../../../features/auth/viewmodel/auth_viewmodel.dart';
 import '../viewmodel/home_viewmodel.dart';
 
-/// Home screen shows two tabs: Announcements and Materials.
-/// Teachers see a FAB to post/upload; students see content only.
 class HomeScreen extends ConsumerStatefulWidget {
-  const HomeScreen({super.key});
+  final String classroomId;
+  const HomeScreen({super.key, required this.classroomId});
 
   @override
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen>
-    with SingleTickerProviderStateMixin {
+class _HomeScreenState extends ConsumerState<HomeScreen> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
   @override
@@ -33,33 +31,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    // OBSERVER: watch triggers a rebuild whenever homeProvider state changes
-    final homeState = ref.watch(homeProvider);
-    final user = ref.watch(authProvider);
-    final isTeacher = user?.isTeacher ?? false;
+    final homeState = ref.watch(homeProvider(widget.classroomId));
+    final user = ref.watch(authProvider).user;
+    final isTeacherOrManager = user?.role == 'teacher' || user?.role == 'manager';
 
     return Scaffold(
       appBar: AppBar(
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('EduNexus', style: TextStyle(fontWeight: FontWeight.bold)),
-            Text('Hello, ${user?.name ?? ''}',
-                style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w300)),
+            const Text('Classroom', style: TextStyle(fontWeight: FontWeight.bold)),
+            Text('Hello, ${user?.name ?? ''}', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w300)),
           ],
         ),
         actions: [
-          // Assignment list button
           IconButton(
             icon: const Icon(Icons.assignment),
             tooltip: 'Assignments',
-            onPressed: () => context.push('/assignments'),
-          ),
-          // Logout button
-          IconButton(
-            icon: const Icon(Icons.logout),
-            tooltip: 'Logout',
-            onPressed: () => ref.read(authProvider.notifier).logout(),
+            onPressed: () => context.push('/assignments'), // Should ideally pass classroomId too
           ),
         ],
         bottom: TabBar(
@@ -80,23 +69,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
               : TabBarView(
                   controller: _tabController,
                   children: [
-                    // ── Announcements Tab ──────────────────────────────────
                     RefreshIndicator(
-                      onRefresh: () => ref.read(homeProvider.notifier).refresh(),
+                      onRefresh: () => ref.read(homeProvider(widget.classroomId).notifier).refresh(),
                       child: homeState.announcements.isEmpty
-                          ? const _EmptyState(message: 'No announcements yet.')
+                          ? const Center(child: Text('No announcements yet.'))
                           : ListView.builder(
                               itemCount: homeState.announcements.length,
                               itemBuilder: (ctx, i) {
                                 final a = homeState.announcements[i];
                                 return Card(
+                                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                                   child: ListTile(
                                     leading: const CircleAvatar(
                                       backgroundColor: Color(0xFF3D5AF1),
                                       child: Icon(Icons.campaign, color: Colors.white),
                                     ),
-                                    title: Text(a.title,
-                                        style: const TextStyle(fontWeight: FontWeight.w600)),
+                                    title: Text(a.title, style: const TextStyle(fontWeight: FontWeight.w600)),
                                     subtitle: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -105,8 +93,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                                         const SizedBox(height: 4),
                                         Text(
                                           DateFormat('MMM d, yyyy').format(a.createdAt),
-                                          style: TextStyle(
-                                              fontSize: 11, color: Colors.grey[500]),
+                                          style: TextStyle(fontSize: 11, color: Colors.grey[500]),
                                         ),
                                       ],
                                     ),
@@ -116,34 +103,27 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                               },
                             ),
                     ),
-
-                    // ── Materials Tab ──────────────────────────────────────
                     RefreshIndicator(
-                      onRefresh: () => ref.read(homeProvider.notifier).refresh(),
+                      onRefresh: () => ref.read(homeProvider(widget.classroomId).notifier).refresh(),
                       child: homeState.materials.isEmpty
-                          ? const _EmptyState(message: 'No materials uploaded yet.')
+                          ? const Center(child: Text('No materials uploaded yet.'))
                           : ListView.builder(
                               itemCount: homeState.materials.length,
                               itemBuilder: (ctx, i) {
                                 final m = homeState.materials[i];
                                 return Card(
+                                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                                   child: ListTile(
                                     leading: const CircleAvatar(
                                       backgroundColor: Color(0xFF2EC4B6),
                                       child: Icon(Icons.picture_as_pdf, color: Colors.white),
                                     ),
-                                    title: Text(m.title,
-                                        style: const TextStyle(fontWeight: FontWeight.w600)),
+                                    title: Text(m.title, style: const TextStyle(fontWeight: FontWeight.w600)),
                                     subtitle: Text(
                                       DateFormat('MMM d, yyyy').format(m.createdAt),
                                       style: TextStyle(fontSize: 11, color: Colors.grey[500]),
                                     ),
                                     trailing: const Icon(Icons.download, color: Color(0xFF2EC4B6)),
-                                    onTap: () {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(content: Text('Opening ${m.title}…')),
-                                      );
-                                    },
                                   ),
                                 );
                               },
@@ -151,9 +131,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
                     ),
                   ],
                 ),
-
-      // ── FAB (Teacher only) ─────────────────────────────────────────────────
-      floatingActionButton: isTeacher
+      floatingActionButton: isTeacherOrManager
           ? FloatingActionButton.extended(
               onPressed: () => _showAddDialog(context, ref),
               icon: const Icon(Icons.add),
@@ -163,159 +141,78 @@ class _HomeScreenState extends ConsumerState<HomeScreen>
     );
   }
 
-  // ── Dialog to post announcement or upload material ────────────────────────
   void _showAddDialog(BuildContext context, WidgetRef ref) {
     final isAnnouncementTab = _tabController.index == 0;
+    if (isAnnouncementTab) {
+       _showAnnouncementDialog(context, ref);
+    } else {
+       _showMaterialDialog(context, ref);
+    }
+  }
+
+  void _showAnnouncementDialog(BuildContext context, WidgetRef ref) {
+    final titleCtrl = TextEditingController();
+    final contentCtrl = TextEditingController();
     showDialog(
       context: context,
-      builder: (_) => isAnnouncementTab
-          ? _AddAnnouncementDialog(ref: ref)
-          : _AddMaterialDialog(ref: ref),
-    );
-  }
-}
-
-// ── Post Announcement Dialog ──────────────────────────────────────────────────
-class _AddAnnouncementDialog extends StatefulWidget {
-  final WidgetRef ref;
-  const _AddAnnouncementDialog({required this.ref});
-
-  @override
-  State<_AddAnnouncementDialog> createState() => _AddAnnouncementDialogState();
-}
-
-class _AddAnnouncementDialogState extends State<_AddAnnouncementDialog> {
-  final _titleCtrl = TextEditingController();
-  final _contentCtrl = TextEditingController();
-
-  @override
-  void dispose() {
-    _titleCtrl.dispose();
-    _contentCtrl.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Post Announcement'),
-      // ConstrainedBox + SingleChildScrollView: dialog scrolls when the
-      // soft keyboard appears instead of overflowing the screen bottom.
-      content: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 260),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: _titleCtrl,
-                decoration: const InputDecoration(labelText: 'Title'),
-              ),
-              const SizedBox(height: 12),
-              TextField(
-                controller: _contentCtrl,
-                decoration: const InputDecoration(labelText: 'Content'),
-                maxLines: 3,
-              ),
-            ],
-          ),
+      builder: (ctx) => AlertDialog(
+        title: const Text('Post Announcement'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(controller: titleCtrl, decoration: const InputDecoration(labelText: 'Title')),
+            TextField(controller: contentCtrl, decoration: const InputDecoration(labelText: 'Content'), maxLines: 3),
+          ],
         ),
-      ),
-      actions: [
-        TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
-        ElevatedButton(
-          onPressed: () {
-            if (_titleCtrl.text.trim().isEmpty) return;
-            widget.ref.read(homeProvider.notifier).postAnnouncement(
-                  title: _titleCtrl.text.trim(),
-                  content: _contentCtrl.text.trim(),
-                  teacherId: widget.ref.read(authProvider)!.id,
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          ElevatedButton(
+            onPressed: () {
+              if (titleCtrl.text.trim().isNotEmpty) {
+                ref.read(homeProvider(widget.classroomId).notifier).postAnnouncement(
+                  title: titleCtrl.text.trim(),
+                  content: contentCtrl.text.trim(),
+                  teacherId: ref.read(authProvider).user!.id,
                 );
-            Navigator.pop(context);
-          },
-          child: const Text('Post'),
-        ),
-      ],
-    );
-  }
-}
-
-// ── Upload Material Dialog ────────────────────────────────────────────────────
-class _AddMaterialDialog extends StatefulWidget {
-  final WidgetRef ref;
-  const _AddMaterialDialog({required this.ref});
-
-  @override
-  State<_AddMaterialDialog> createState() => _AddMaterialDialogState();
-}
-
-class _AddMaterialDialogState extends State<_AddMaterialDialog> {
-  final _titleCtrl = TextEditingController();
-  final _urlCtrl   = TextEditingController();
-
-  @override
-  void dispose() {
-    _titleCtrl.dispose();
-    _urlCtrl.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: const Text('Upload Material'),
-      content: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 200),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                controller: _titleCtrl,
-                decoration: const InputDecoration(labelText: 'Title'),
-              ),
-              const SizedBox(height: 12),
-              TextField(
-                controller: _urlCtrl,
-                decoration: const InputDecoration(labelText: 'File URL'),
-              ),
-            ],
+                Navigator.pop(ctx);
+              }
+            },
+            child: const Text('Post'),
           ),
-        ),
+        ],
       ),
-      actions: [
-        TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
-        ElevatedButton(
-          onPressed: () {
-            if (_titleCtrl.text.trim().isEmpty || _urlCtrl.text.trim().isEmpty) return;
-            widget.ref.read(homeProvider.notifier).uploadMaterial(
-                  title: _titleCtrl.text.trim(),
-                  fileUrl: _urlCtrl.text.trim(),
-                  teacherId: widget.ref.read(authProvider)!.id,
-                );
-            Navigator.pop(context);
-          },
-          child: const Text('Upload'),
-        ),
-      ],
     );
   }
-}
 
-// ── Empty state widget ────────────────────────────────────────────────────────
-class _EmptyState extends StatelessWidget {
-  final String message;
-  const _EmptyState({required this.message});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(Icons.inbox_outlined, size: 64, color: Colors.grey[300]),
-          const SizedBox(height: 12),
-          Text(message, style: TextStyle(color: Colors.grey[500])),
+  void _showMaterialDialog(BuildContext context, WidgetRef ref) {
+    final titleCtrl = TextEditingController();
+    final urlCtrl = TextEditingController();
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text('Upload Material'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(controller: titleCtrl, decoration: const InputDecoration(labelText: 'Title')),
+            TextField(controller: urlCtrl, decoration: const InputDecoration(labelText: 'URL')),
+          ],
+        ),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(ctx), child: const Text('Cancel')),
+          ElevatedButton(
+            onPressed: () {
+              if (titleCtrl.text.trim().isNotEmpty) {
+                ref.read(homeProvider(widget.classroomId).notifier).uploadMaterial(
+                  title: titleCtrl.text.trim(),
+                  fileUrl: urlCtrl.text.trim(),
+                  teacherId: ref.read(authProvider).user!.id,
+                );
+                Navigator.pop(ctx);
+              }
+            },
+            child: const Text('Upload'),
+          ),
         ],
       ),
     );
